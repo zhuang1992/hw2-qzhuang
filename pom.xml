@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cmu.lti.11791.f14.hw1</groupId>
 	<artifactId>hw2-qzhuang</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>oaqa</id>
@@ -123,6 +123,6 @@
 		<url>scm:git:git@github.com:zhuang1992/hw2-qzhuang.git</url>
 		<connection>scm:git:git@github.com:zhuang1992/hw2-qzhuang.git</connection>
 		<developerConnection>scm:git:git@github.com:zhuang1992/hw2-qzhuang.git</developerConnection>
-	  <tag>hw2-qzhuang-0.0.3</tag>
+	  <tag>HEAD</tag>
   </scm>
 </project>

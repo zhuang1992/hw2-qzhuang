@@ -12,12 +12,12 @@ import org.apache.uima.cas.Type;
 
 /** 
  * Updated by JCasGen Wed Sep 11 13:44:28 EDT 2013
- * @generated */
+ *  */
 public class Question_Type extends Annotation_Type {
-  /** @generated */
+  /**  */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -33,18 +33,18 @@ public class Question_Type extends Annotation_Type {
         } else return new Question(addr, Question_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = Question.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.Question");
 
 
 
   /** initialize variables to correspond with Cas Type and Features
-	* @generated */
+	*  */
   public Question_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());

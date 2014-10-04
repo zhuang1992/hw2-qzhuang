@@ -12,12 +12,12 @@ import org.apache.uima.cas.Type;
 
 /** 
  * Updated by JCasGen Wed Sep 11 13:44:28 EDT 2013
- * @generated */
+ *  */
 public class Token_Type extends Annotation_Type {
-  /** @generated */
+  /**  */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -33,18 +33,18 @@ public class Token_Type extends Annotation_Type {
         } else return new Token(addr, Token_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = Token.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.Token");
 
 
 
   /** initialize variables to correspond with Cas Type and Features
-	* @generated */
+	*  */
   public Token_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());

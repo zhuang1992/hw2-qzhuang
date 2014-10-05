@@ -66,14 +66,18 @@ public class NGram extends Annotation {
   //* Feature: elements
 
   /** getter for elements - gets 
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public FSArray getElements() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elements == null)
       jcasType.jcas.throwFeatMissing("elements", "edu.cmu.deiis.types.NGram");
     return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((NGram_Type)jcasType).casFeatCode_elements)));}
     
   /** setter for elements - sets  
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setElements(FSArray v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elements == null)
       jcasType.jcas.throwFeatMissing("elements", "edu.cmu.deiis.types.NGram");
@@ -100,14 +104,18 @@ public class NGram extends Annotation {
   //* Feature: elementType
 
   /** getter for elementType - gets 
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public String getElementType() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elementType == null)
       jcasType.jcas.throwFeatMissing("elementType", "edu.cmu.deiis.types.NGram");
     return jcasType.ll_cas.ll_getStringValue(addr, ((NGram_Type)jcasType).casFeatCode_elementType);}
     
   /** setter for elementType - sets  
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setElementType(String v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elementType == null)
       jcasType.jcas.throwFeatMissing("elementType", "edu.cmu.deiis.types.NGram");

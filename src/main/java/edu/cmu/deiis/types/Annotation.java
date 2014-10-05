@@ -65,14 +65,18 @@ public class Annotation extends org.apache.uima.jcas.tcas.Annotation {
   //* Feature: casProcessorId
 
   /** getter for casProcessorId - gets The unique identifier of the CAS processor that added this annotation to the CAS
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public String getCasProcessorId() {
     if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_casProcessorId == null)
       jcasType.jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
     return jcasType.ll_cas.ll_getStringValue(addr, ((Annotation_Type)jcasType).casFeatCode_casProcessorId);}
     
   /** setter for casProcessorId - sets The unique identifier of the CAS processor that added this annotation to the CAS 
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setCasProcessorId(String v) {
     if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_casProcessorId == null)
       jcasType.jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
@@ -83,14 +87,18 @@ public class Annotation extends org.apache.uima.jcas.tcas.Annotation {
   //* Feature: confidence
 
   /** getter for confidence - gets The confidence level assigned to the Annotation by the CAS processor that created it.
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public double getConfidence() {
     if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_confidence == null)
       jcasType.jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
     return jcasType.ll_cas.ll_getDoubleValue(addr, ((Annotation_Type)jcasType).casFeatCode_confidence);}
     
   /** setter for confidence - sets The confidence level assigned to the Annotation by the CAS processor that created it. 
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setConfidence(double v) {
     if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_confidence == null)
       jcasType.jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");

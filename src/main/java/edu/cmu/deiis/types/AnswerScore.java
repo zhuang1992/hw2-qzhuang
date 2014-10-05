@@ -65,14 +65,18 @@ public class AnswerScore extends Annotation {
   //* Feature: score
 
   /** getter for score - gets 
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public double getScore() {
     if (AnswerScore_Type.featOkTst && ((AnswerScore_Type)jcasType).casFeat_score == null)
       jcasType.jcas.throwFeatMissing("score", "edu.cmu.deiis.types.AnswerScore");
     return jcasType.ll_cas.ll_getDoubleValue(addr, ((AnswerScore_Type)jcasType).casFeatCode_score);}
     
   /** setter for score - sets  
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setScore(double v) {
     if (AnswerScore_Type.featOkTst && ((AnswerScore_Type)jcasType).casFeat_score == null)
       jcasType.jcas.throwFeatMissing("score", "edu.cmu.deiis.types.AnswerScore");
@@ -83,14 +87,18 @@ public class AnswerScore extends Annotation {
   //* Feature: answer
 
   /** getter for answer - gets 
-   *  */
+   * @generated
+   * @return value of the feature 
+   */
   public Answer getAnswer() {
     if (AnswerScore_Type.featOkTst && ((AnswerScore_Type)jcasType).casFeat_answer == null)
       jcasType.jcas.throwFeatMissing("answer", "edu.cmu.deiis.types.AnswerScore");
     return (Answer)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((AnswerScore_Type)jcasType).casFeatCode_answer)));}
     
   /** setter for answer - sets  
-   *  */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setAnswer(Answer v) {
     if (AnswerScore_Type.featOkTst && ((AnswerScore_Type)jcasType).casFeat_answer == null)
       jcasType.jcas.throwFeatMissing("answer", "edu.cmu.deiis.types.AnswerScore");

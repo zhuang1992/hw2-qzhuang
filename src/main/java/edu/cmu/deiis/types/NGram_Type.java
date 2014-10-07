@@ -14,14 +14,14 @@ import org.apache.uima.cas.Feature;
 
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
- * @generated */
+ *  */
 public class NGram_Type extends Annotation_Type {
-  /** @generated 
+  /**  
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -37,19 +37,19 @@ public class NGram_Type extends Annotation_Type {
         } else return new NGram(addr, NGram_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = NGram.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.NGram");
  
-  /** @generated */
+  /**  */
   final Feature casFeat_elements;
-  /** @generated */
+  /**  */
   final int     casFeatCode_elements;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -58,7 +58,7 @@ public class NGram_Type extends Annotation_Type {
       jcas.throwFeatMissing("elements", "edu.cmu.deiis.types.NGram");
     return ll_cas.ll_getRefValue(addr, casFeatCode_elements);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -67,7 +67,7 @@ public class NGram_Type extends Annotation_Type {
       jcas.throwFeatMissing("elements", "edu.cmu.deiis.types.NGram");
     ll_cas.ll_setRefValue(addr, casFeatCode_elements, v);}
     
-   /** @generated
+   /** 
    * @param addr low level Feature Structure reference
    * @param i index of item in the array
    * @return value at index i in the array 
@@ -81,7 +81,7 @@ public class NGram_Type extends Annotation_Type {
   return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_elements), i);
   }
    
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param i index of item in the array
    * @param v value to set
@@ -96,11 +96,11 @@ public class NGram_Type extends Annotation_Type {
   }
  
  
-  /** @generated */
+  /**  */
   final Feature casFeat_elementType;
-  /** @generated */
+  /**  */
   final int     casFeatCode_elementType;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -109,7 +109,7 @@ public class NGram_Type extends Annotation_Type {
       jcas.throwFeatMissing("elementType", "edu.cmu.deiis.types.NGram");
     return ll_cas.ll_getStringValue(addr, casFeatCode_elementType);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -123,7 +123,7 @@ public class NGram_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	 * @generated
+	 * 
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */

@@ -15,14 +15,14 @@ import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
- * @generated */
+ *  */
 public class LRParameter_Type extends Annotation_Type {
-  /** @generated 
+  /**  
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -38,19 +38,19 @@ public class LRParameter_Type extends Annotation_Type {
         } else return new LRParameter(addr, LRParameter_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = LRParameter.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.LRParameter");
  
-  /** @generated */
+  /**  */
   final Feature casFeat_Parameters;
-  /** @generated */
+  /**  */
   final int     casFeatCode_Parameters;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -59,7 +59,7 @@ public class LRParameter_Type extends Annotation_Type {
       jcas.throwFeatMissing("Parameters", "edu.cmu.deiis.types.LRParameter");
     return ll_cas.ll_getRefValue(addr, casFeatCode_Parameters);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -68,7 +68,7 @@ public class LRParameter_Type extends Annotation_Type {
       jcas.throwFeatMissing("Parameters", "edu.cmu.deiis.types.LRParameter");
     ll_cas.ll_setRefValue(addr, casFeatCode_Parameters, v);}
     
-   /** @generated
+   /** 
    * @param addr low level Feature Structure reference
    * @param i index of item in the array
    * @return value at index i in the array 
@@ -82,7 +82,7 @@ public class LRParameter_Type extends Annotation_Type {
   return ll_cas.ll_getDoubleArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_Parameters), i);
   }
    
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param i index of item in the array
    * @param v value to set
@@ -100,7 +100,7 @@ public class LRParameter_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	 * @generated
+	 * 
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */

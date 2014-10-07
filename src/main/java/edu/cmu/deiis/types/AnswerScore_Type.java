@@ -14,14 +14,14 @@ import org.apache.uima.cas.Feature;
 
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
- * @generated */
+ *  */
 public class AnswerScore_Type extends Annotation_Type {
-  /** @generated 
+  /**  
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -37,19 +37,19 @@ public class AnswerScore_Type extends Annotation_Type {
         } else return new AnswerScore(addr, AnswerScore_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = AnswerScore.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.AnswerScore");
  
-  /** @generated */
+  /**  */
   final Feature casFeat_score;
-  /** @generated */
+  /**  */
   final int     casFeatCode_score;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -58,7 +58,7 @@ public class AnswerScore_Type extends Annotation_Type {
       jcas.throwFeatMissing("score", "edu.cmu.deiis.types.AnswerScore");
     return ll_cas.ll_getDoubleValue(addr, casFeatCode_score);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -69,11 +69,11 @@ public class AnswerScore_Type extends Annotation_Type {
     
   
  
-  /** @generated */
+  /**  */
   final Feature casFeat_answer;
-  /** @generated */
+  /**  */
   final int     casFeatCode_answer;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -82,7 +82,7 @@ public class AnswerScore_Type extends Annotation_Type {
       jcas.throwFeatMissing("answer", "edu.cmu.deiis.types.AnswerScore");
     return ll_cas.ll_getRefValue(addr, casFeatCode_answer);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -96,7 +96,7 @@ public class AnswerScore_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	 * @generated
+	 * 
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */

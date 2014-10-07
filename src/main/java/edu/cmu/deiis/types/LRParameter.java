@@ -14,30 +14,30 @@ import org.apache.uima.jcas.tcas.Annotation;
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
  * XML source: /home/micz/workspace/hw2-qzhuang/src/main/resources/descriptors/training/TrainerDescriptor.xml
- * @generated */
+ *  */
 public class LRParameter extends Annotation {
-  /** @generated
-   * @ordered 
+  /** 
+   *  
    */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(LRParameter.class);
-  /** @generated
-   * @ordered 
+  /** 
+   *  
    */
   @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
-  /** @generated
+  /** 
    * @return index of the type  
    */
   @Override
   public              int getTypeIndexID() {return typeIndexID;}
  
   /** Never called.  Disable default constructor
-   * @generated */
+   *  */
   protected LRParameter() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
-   * @generated
+   * 
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
@@ -46,7 +46,7 @@ public class LRParameter extends Annotation {
     readObject();
   }
   
-  /** @generated
+  /** 
    * @param jcas JCas to which this Feature Structure belongs 
    */
   public LRParameter(JCas jcas) {
@@ -54,7 +54,7 @@ public class LRParameter extends Annotation {
     readObject();   
   } 
 
-  /** @generated
+  /** 
    * @param jcas JCas to which this Feature Structure belongs
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
@@ -71,7 +71,7 @@ public class LRParameter extends Annotation {
    * Write your own initialization here
    * <!-- end-user-doc -->
    *
-   * @generated modifiable 
+   *  modifiable 
    */
   private void readObject() {/*default - does nothing empty block */}
      
@@ -81,7 +81,7 @@ public class LRParameter extends Annotation {
   //* Feature: Parameters
 
   /** getter for Parameters - gets 
-   * @generated
+   * 
    * @return value of the feature 
    */
   public DoubleArray getParameters() {
@@ -90,7 +90,7 @@ public class LRParameter extends Annotation {
     return (DoubleArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((LRParameter_Type)jcasType).casFeatCode_Parameters)));}
     
   /** setter for Parameters - sets  
-   * @generated
+   * 
    * @param v value to set into the feature 
    */
   public void setParameters(DoubleArray v) {
@@ -99,7 +99,7 @@ public class LRParameter extends Annotation {
     jcasType.ll_cas.ll_setRefValue(addr, ((LRParameter_Type)jcasType).casFeatCode_Parameters, jcasType.ll_cas.ll_getFSRef(v));}    
     
   /** indexed getter for Parameters - gets an indexed value - 
-   * @generated
+   * 
    * @param i index in the array to get
    * @return value of the element at index i 
    */
@@ -110,7 +110,7 @@ public class LRParameter extends Annotation {
     return jcasType.ll_cas.ll_getDoubleArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((LRParameter_Type)jcasType).casFeatCode_Parameters), i);}
 
   /** indexed setter for Parameters - sets an indexed value - 
-   * @generated
+   * 
    * @param i index in the array to set
    * @param v value to set into the array 
    */

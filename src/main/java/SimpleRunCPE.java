@@ -14,10 +14,11 @@ import org.apache.uima.collection.metadata.CpeDescription;
 import org.apache.uima.util.XMLInputSource;
 
 /**
- * Main Class that runs a Collection Processing Engine (CPE). This class reads a CPE Descriptor as a
- * command-line argument and instantiates the CPE. It also registers a callback listener with the
+ * Main Class that runs a Collection Processing Engine (CPE). It also registers a callback listener with the
  * CPE, which will print progress and statistics to System.out.
- * 
+ * There are two cpePath you can choose, 
+ * TrainDesriptorPath for training only
+ * TrainAndWorkDescriptorPath for both training and tagging.
  * 
  */
 public class SimpleRunCPE extends Thread {
@@ -80,14 +81,17 @@ public class SimpleRunCPE extends Thread {
     }
   }
 
-  /**
-     * 
-     */
   private static void printUsageMessage() {
     System.out.println(" Arguments to the program are as follows : \n"
             + "args[0] : path to CPE descriptor file");
   }
+  /**
+   * Descriptor path for training 
+   **/
   private static final String TrainDesriptorPath = "src/main/resources/descriptors/training/TrainCPEDescriptor.xml";
+  /**
+   * Descriptor path for training and tagging
+   **/
   private static final String TrainAndWorkDescriptorPath = "src/main/resources/descriptors/CpeDescriptor.xml";
   /**
    * main class.

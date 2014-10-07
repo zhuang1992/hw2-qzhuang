@@ -1,17 +1,18 @@
 package annotators;
 import java.util.Iterator;
 import java.util.Vector;
-
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 
 import tools.AbnerNLP;
-import tools.LingpipeNBest;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.Sentence;
-import abner.*;
+/**
+ * This class annotates the input sentence by calling the Abner NLP.
+ * @author Qiankun Zhuang
+ */
 public class AbnerAnnotator extends JCasAnnotator_ImplBase{
   private static double confidence = 1.0;
   @Override

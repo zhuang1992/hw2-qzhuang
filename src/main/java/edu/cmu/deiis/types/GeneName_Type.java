@@ -14,14 +14,14 @@ import org.apache.uima.cas.Feature;
 
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
- * @generated */
+ *  */
 public class GeneName_Type extends Annotation_Type {
-  /** @generated 
+  /**  
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -37,19 +37,19 @@ public class GeneName_Type extends Annotation_Type {
         } else return new GeneName(addr, GeneName_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = GeneName.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.GeneName");
  
-  /** @generated */
+  /**  */
   final Feature casFeat_Id;
-  /** @generated */
+  /**  */
   final int     casFeatCode_Id;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -58,7 +58,7 @@ public class GeneName_Type extends Annotation_Type {
       jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.GeneName");
     return ll_cas.ll_getStringValue(addr, casFeatCode_Id);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -69,11 +69,11 @@ public class GeneName_Type extends Annotation_Type {
     
   
  
-  /** @generated */
+  /**  */
   final Feature casFeat_Name;
-  /** @generated */
+  /**  */
   final int     casFeatCode_Name;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -82,7 +82,7 @@ public class GeneName_Type extends Annotation_Type {
       jcas.throwFeatMissing("Name", "edu.cmu.deiis.types.GeneName");
     return ll_cas.ll_getStringValue(addr, casFeatCode_Name);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -93,11 +93,11 @@ public class GeneName_Type extends Annotation_Type {
     
   
  
-  /** @generated */
+  /**  */
   final Feature casFeat_text;
-  /** @generated */
+  /**  */
   final int     casFeatCode_text;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -106,7 +106,7 @@ public class GeneName_Type extends Annotation_Type {
       jcas.throwFeatMissing("text", "edu.cmu.deiis.types.GeneName");
     return ll_cas.ll_getStringValue(addr, casFeatCode_text);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -120,7 +120,7 @@ public class GeneName_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	 * @generated
+	 * 
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */

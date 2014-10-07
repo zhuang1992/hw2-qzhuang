@@ -14,14 +14,14 @@ import org.apache.uima.cas.Feature;
 
 /** 
  * Updated by JCasGen Tue Oct 07 15:45:40 EDT 2014
- * @generated */
+ *  */
 public class Answer_Type extends Annotation_Type {
-  /** @generated 
+  /**  
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
+  /**  */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -37,19 +37,19 @@ public class Answer_Type extends Annotation_Type {
         } else return new Answer(addr, Answer_Type.this);
   	  }
     };
-  /** @generated */
+  /**  */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = Answer.typeIndexID;
-  /** @generated 
-     @modifiable */
+  /**  
+      */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.Answer");
  
-  /** @generated */
+  /**  */
   final Feature casFeat_isCorrect;
-  /** @generated */
+  /**  */
   final int     casFeatCode_isCorrect;
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
@@ -58,7 +58,7 @@ public class Answer_Type extends Annotation_Type {
       jcas.throwFeatMissing("isCorrect", "edu.cmu.deiis.types.Answer");
     return ll_cas.ll_getBooleanValue(addr, casFeatCode_isCorrect);
   }
-  /** @generated
+  /** 
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
@@ -72,7 +72,7 @@ public class Answer_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	 * @generated
+	 * 
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */

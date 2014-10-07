@@ -3,7 +3,7 @@ package annotators;
 import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
@@ -13,10 +13,13 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.DoubleArray;
+import org.apache.uima.resource.ResourceAccessException;
+
 import edu.cmu.deiis.types.GeneName;
+import edu.cmu.deiis.types.LRParameter;
 
 public class LRTrainer extends JCasAnnotator_ImplBase {
-  String correctTag = "src/main/resources/dataForTraining";
 
   private static final int numOfAnnotators = 3;
 
@@ -38,12 +41,16 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.out.println("Start running logistic regression trainer:");
     NBest = new HashMap<String, Double>();
     Stanford = new HashMap<String, Double>();
     Abner = new HashMap<String, Double>();
-    FSIndex taggedGene = aJCas.getAnnotationIndex(GeneName.type);
-    FSIterator iter = taggedGene.iterator();
+    FSIndex geneName = aJCas.getAnnotationIndex(GeneName.type);
+    FSIterator iter = geneName.iterator();
+    LinkedList<GeneName> GeneNameRecord = new LinkedList<GeneName>();
+    int count = 0;
     while (iter.hasNext()) {
+      count++;
       GeneName gene = (GeneName) iter.next();
       // System.out.println(genes.getCasProcessorId());
       if (gene.getCasProcessorId().equals("class annotators.LingpipeNBestAnnotator")) {
@@ -68,11 +75,28 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
           Abner.put(name, (Abner.get(name) + gene.getConfidence()) / 2.0);
         }
       }
+      GeneNameRecord.add(gene);
     }
-    File correctFile = new File(correctTag);
+    //System.out.println("LRTrainer count: "+count);
+    for(GeneName gene : GeneNameRecord){
+      gene.removeFromIndexes();
+    }
+//    iter = geneName.iterator();
+//    count = 0;
+//    while(iter.hasNext()){
+//      iter.next();
+//      count++;
+//    }
+//    System.out.println("LRTrainer count(after removing): "+count);
+    InputStream stream = null;
+    try {
+      stream = getContext().getResourceAsStream("dataForTraining");
+    } catch (ResourceAccessException e1) {
+      e1.printStackTrace();
+    }
     correct = new HashSet<String>();
     try {
-      BufferedReader reader = new BufferedReader(new FileReader(correctFile));
+      BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
       String temp = null;
       while ((temp = reader.readLine()) != null) {
         String[] items = temp.split("\\|");
@@ -89,7 +113,7 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
     }
     double[][] conf = new double[NBest.size() + Stanford.size() + Abner.size()][numOfAnnotators];
 
-    System.out.println("Preparing the confidence value:");
+    System.out.println("Preparing the confidence value...");
     int index = 0;
     Vector<String> names = new Vector<String>();
     for (Entry<String, Double> entry : NBest.entrySet()) {
@@ -134,6 +158,7 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
     for (int i = 0; i < index; i++) {
       // System.out.println("conf:"+conf[i][0]+" "+conf[i][1]+" "+conf[i][2]);
     }
+    System.out.println("Start Traning...");
     int dim = numOfAnnotators;
     int size = index;
     double weight[] = new double[dim + 1];
@@ -149,7 +174,7 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
           double pre = sigmoid(innerProduct(weight, conf[s]));
           // System.out.println("prediction:"+pre);
           double yi = correct.contains(names.elementAt(s)) ? 1.0 : 0.0;
-          double x = d < dim ? conf[s][d] : 1.0;
+          double x = (d == 0 ? 1.0 : conf[s][d-1]);
           sum += (pre - yi) * x;
           // System.out.println("yi:"+yi);
         }
@@ -163,17 +188,28 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
           cost += Math.max(-10.0, Math.log(pre));
         } else {
           cost += Math.max(-10.0, Math.log(1.0 - pre));
-          if (Math.log(1.0 - pre) < -1000) {
-            // System.out.println("abnormal:"+names.get(s));//eg:HIV-1
-          }
+//          if (Math.log(1.0 - pre) < -1000) {
+//            System.out.println("abnormal:"+names.get(s));//eg:HIV-1
+//          }
         }
       }
       cost *= -1.0 / (double) size;
       System.out.println("cost:" + cost);
     }
-    for (double d : weight) {
-      System.out.println("weight: " + d);
+    DoubleArray values = new DoubleArray(aJCas,weight.length);
+    int i = 0;
+    System.out.println(weight.length);
+    for (i = 0; i < weight.length; i++) {
+      values.set(i, weight[i]);
     }
+    LRParameter parameter = new LRParameter(aJCas);
+    parameter.setParameters(values);
+    parameter.addToIndexes();   
+    System.out.println("Training complete. Start tagging with the weights we get:");
+    System.out.println("Weight for Lingpipe: "+weight[1]);
+    System.out.println("Weight for Stanford: "+weight[2]);
+    System.out.println("Weight for Abner: "+weight[3]);
+    System.out.println("Bias: "+weight[0]);
   }
 
   public void destroy() {
@@ -181,10 +217,10 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
 
   private double innerProduct(double w[], double x[]) {
     double sum = 0;
+    sum += w[0] * 1.0;
     for (int i = 0; i < x.length; i++) {
-      sum += w[i] * x[i];
+      sum += w[i+1] * x[i];
     }
-    sum += w[w.length - 1] * 1.0;
     return sum;
   }
 }

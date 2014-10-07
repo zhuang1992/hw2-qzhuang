@@ -19,6 +19,7 @@ public class StanfordAnnotator extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.out.println("Tagging with StanfordNLP...");
     FSIndex sentenceIndex = aJCas.getAnnotationIndex(Sentence.type);
     Iterator iter = sentenceIndex.iterator();
     StanfordNLP nlp = null;

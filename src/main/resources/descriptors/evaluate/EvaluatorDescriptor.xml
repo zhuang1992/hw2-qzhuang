@@ -8,24 +8,11 @@
     <version>1.0</version>
     <vendor/>
     <configurationParameters>
-      <configurationParameter>
-        <name>SampleOutPath</name>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>false</mandatory>
-      </configurationParameter>
-    </configurationParameters>
-    <configurationParameterSettings>
-      <nameValuePair>
-        <name>SampleOutPath</name>
-        <value>
-          <string>src/main/resources/ForEvaluation</string>
-        </value>
-      </nameValuePair>
-    </configurationParameterSettings>
+      </configurationParameters>
+    <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="uima/deiis_types.xml"/>
+        <import location="../uima/deiis_types.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
@@ -45,5 +32,22 @@
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
-  <resourceManagerConfiguration/>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>dataForEvaluation</key>
+      <description/>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>dataForEvaluation</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:dataForEvaluation</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+    </externalResources>
+  </resourceManagerConfiguration>
 </analysisEngineDescription>

@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>
-  <annotatorImplementationName>annotators.SplitToSentence</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>annotators.AnnotationMerge</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>sentenceSplitDescriptor</name>
+    <name>MergeAnnotator</name>
     <description/>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    
     <typeSystemDescription>
       <imports>
-        <import location="uima/deiis_types.xml"/>
+        <import location="../uima/deiis_types.xml"/>
       </imports>
     </typeSystemDescription>
-    <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">uima.tcas.Annotation</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.GeneNames</type>
         </inputs>
         <outputs>
-          <type allAnnotatorFeatures="true">Sentence</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.TaggedGenes</type>
         </outputs>
         <languagesSupported/>
       </capability>

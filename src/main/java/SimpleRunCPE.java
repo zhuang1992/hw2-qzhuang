@@ -1,4 +1,4 @@
-package tools;
+
 
 
 import java.io.BufferedReader;
@@ -87,7 +87,7 @@ public class SimpleRunCPE extends Thread {
     System.out.println(" Arguments to the program are as follows : \n"
             + "args[0] : path to CPE descriptor file");
   }
-  private static final String TrainDesriptorPath = "src/main/resources/descriptors/TrainCPEDescriptor.xml";
+  private static final String TrainDesriptorPath = "src/main/resources/descriptors/training/TrainCPEDescriptor.xml";
   private static final String TrainAndWorkDescriptorPath = "src/main/resources/descriptors/CpeDescriptor.xml";
   /**
    * main class.

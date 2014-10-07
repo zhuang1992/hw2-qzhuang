@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -12,12 +14,12 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceAccessException;
 
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.TaggedGenes;
 
 public class Evaluator extends JCasAnnotator_ImplBase{
-  String sampleOutput = "src/main/resources/Correct.data";
   int hitting;
   int myGeneNum;
   int sampleNum;
@@ -33,12 +35,18 @@ public class Evaluator extends JCasAnnotator_ImplBase{
   }
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.out.println("Start evaluation...");
+    InputStream stream = null;
+    try {
+      stream = getContext().getResourceAsStream("dataForEvaluation");
+    } catch (ResourceAccessException e1) {
+      e1.printStackTrace();
+    }
     hitting = 0;
     sampleNum = 0;
     standard = new HashMap<String, Boolean>();
-    File sampleFile = new File(sampleOutput);
     try {
-      BufferedReader sampleFileReader = new BufferedReader(new FileReader(sampleFile));
+      BufferedReader sampleFileReader = new BufferedReader(new InputStreamReader(stream));
       String temp = null;
       while((temp=sampleFileReader.readLine())!=null){
         String[] items = temp.split("\\|");

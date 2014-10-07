@@ -4,23 +4,23 @@
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="sentenceSplitDescriptor">
-      <import location="sentenceSplitDescriptor.xml"/>
+      <import location="../others/sentenceSplitDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="LingpipeDescriptor">
-      <import location="Lingpipe/LingpipeDescriptor.xml"/>
+      <import location="../lingpipe/LingpipeDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="StanfordDescriptor">
-      <import location="Stanford/StanfordDescriptor.xml"/>
+      <import location="../stanford/StanfordDescriptor.xml"/>
     </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="MergeAnnotator">
-      <import location="MergeAnnotator.xml"/>
+    <delegateAnalysisEngine key="TrainerDescriptor">
+      <import location="TrainerDescriptor.xml"/>
     </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="EvaluatorDescriptor">
-      <import location="EvaluatorDescriptor.xml"/>
+  <delegateAnalysisEngine key="AbnerAnnotator">
+      <import location="../abner/AbnerAnnotator.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
-    <name>CPEPipeline</name>
+    <name>TrainPipeDescriptor</name>
     <description/>
     <version>1.0</version>
     <vendor/>
@@ -31,14 +31,16 @@
         <node>sentenceSplitDescriptor</node>
         <node>LingpipeDescriptor</node>
         <node>StanfordDescriptor</node>
-        <node>MergeAnnotator</node>
-        <node>EvaluatorDescriptor</node>
+        <node>AbnerAnnotator</node>
+      <node>TrainerDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
+        <inputs>
+          <type allAnnotatorFeatures="true">uima.tcas.Annotation</type>
+        </inputs>
         <outputs/>
         <languagesSupported/>
       </capability>

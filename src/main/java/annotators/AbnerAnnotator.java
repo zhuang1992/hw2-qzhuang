@@ -16,6 +16,7 @@ public class AbnerAnnotator extends JCasAnnotator_ImplBase{
   private static double confidence = 1.0;
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.out.println("Tagging with Abner...");
     FSIndex sentenceIndex = aJCas.getAnnotationIndex(Sentence.type);
     Iterator iter = sentenceIndex.iterator();
     AbnerNLP nlp = AbnerNLP.getInstance();

@@ -12,6 +12,7 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 
 import edu.cmu.deiis.types.GeneName;
+import edu.cmu.deiis.types.LRParameter;
 import edu.cmu.deiis.types.TaggedGenes;
 
 public class AnnotationMerge extends JCasAnnotator_ImplBase {
@@ -19,7 +20,6 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
   double Theta[];
 
   private static double sigmoid(double x) {
-    // System.out.println(x);
     return 1.0 / (1.0 + Math.exp(-x));
   }
 
@@ -27,15 +27,23 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.out.println("Start merging...");
     Theta = new double[numOfAnnotator+1];
-    Theta[1] = 1.6945137911361492;
-    Theta[2] = -0.8911823906039535;
-    Theta[3] = 1.1750318961900283;
-    Theta[0] = -2.460475929304297;
+    FSIndex LRPara = aJCas.getAnnotationIndex(LRParameter.type);
+    FSIterator ParaIter = LRPara.iterator();
+    while(ParaIter.hasNext()){
+      LRParameter para = (LRParameter)ParaIter.next();
+      for(int i = 0; i < para.getParameters().size(); i++){
+        Theta[i] = para.getParameters(i);
+        //System.out.println(Theta[i]);
+      }
+    }
     lr = new HashMap<String, Double>();
     FSIndex geneNames = aJCas.getAnnotationIndex(GeneName.type);
     FSIterator iter = geneNames.iterator();
+    int count = 0;
     while (iter.hasNext()) {
+      count++;
       GeneName geneName = (GeneName) iter.next();
       if (geneName.getCasProcessorId().equals("class annotators.LingpipeNBestAnnotator")) {
         String name = geneName.getName();
@@ -61,7 +69,7 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
     iter = geneNames.iterator();
     Set<String>visitedID = new HashSet<String>();  //Assume the ID of each sentence is distinct
     while (iter.hasNext()) {
-      GeneName name = (GeneName) iter.next();   
+      GeneName name = (GeneName) iter.next();
       if(visitedID.contains(name.getId())){
         continue;
       }
@@ -82,5 +90,4 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
       newTagging.addToIndexes();
     }
   }
-
 }

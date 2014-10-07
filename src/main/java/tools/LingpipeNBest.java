@@ -25,7 +25,7 @@ public class LingpipeNBest {
   /**
    * The path of the trained data set we are using
    */
-  String ChunkerFile = "src/main/resources/ne-en-bio-genetag.HmmChunker";
+  
 
   File modelFile;
 
@@ -38,7 +38,7 @@ public class LingpipeNBest {
   /**
    * Constructor of NERLingpipe
    */
-  private LingpipeNBest() {
+  private LingpipeNBest(String ChunkerFile) {
     try {
       modelFile = new File(ChunkerFile);
       chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
@@ -52,9 +52,9 @@ public class LingpipeNBest {
   /**
    * Singleton pattern to ensure only one instance of NERLingpipe is created.
    */
-  public static LingpipeNBest getInstance() {
+  public static LingpipeNBest getInstance(String ChunkerFile) {
     if (instance == null)
-      instance = new LingpipeNBest();
+      instance = new LingpipeNBest(ChunkerFile);
     return instance;
   }
 
@@ -97,7 +97,8 @@ public class LingpipeNBest {
    * 
    */
   public static void main(String[] args) throws Exception {
-    LingpipeNBest test = new LingpipeNBest();
+    String ChunkerFile = "src/main/resources/ne-en-bio-genetag.HmmChunker";
+    LingpipeNBest test = new LingpipeNBest(ChunkerFile);
     String text = "p53 regulates human insulin-like growth factor II gene expression through active P4 promoter in rhabdomyosarcoma cells.";
     Vector<String> r = test.getGeneSpans(text);
     for (int i = 0; i < r.size(); i++) {

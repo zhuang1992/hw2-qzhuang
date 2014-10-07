@@ -1,26 +1,32 @@
 package tools;
+import java.util.Vector;
+
+import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.jcas.JCas;
+
 import abner.*;
-public class AbnerNLP {
-  public static final int BIOCREATIVE = 1;
-  public String[] process(String text){
-    Tagger tagger = null;
+public class AbnerNLP{
+  static AbnerNLP instance = null;
+  public static AbnerNLP getInstance(){
+    if(instance == null)
+      instance = new AbnerNLP();
+    return instance;
+  }
+  Tagger tagger;
+  AbnerNLP(){
     try{
-      tagger = new Tagger(BIOCREATIVE);
+      tagger = new Tagger(Tagger.BIOCREATIVE);
     }catch(Exception e){
       e.printStackTrace();
     }
-    return tagger.getEntities(text, "genes"); 
   }
-  public static void main(String[] args){
-    try{
-      AbnerNLP test = new AbnerNLP();
-      String text = "Comparison with alkaline phosphatases and 5-nucleotidase";
-      String[] res = test.process(text);
-      for(String s : res){
-        System.out.println(s);
-      }
-    }catch(Exception e){
-      ;
+  public Vector<String> getGeneSpan(String text){
+    String[][] res = tagger.getEntities(text);
+    Vector<String> Names = new Vector<String>();
+    for(int i = 0; i < res[0].length; i++){
+      Names.add(res[0][i]);
     }
+    return Names;
   }
 }

@@ -1,7 +1,7 @@
+
+
+/* First created by JCasGen Sun Oct 05 15:26:32 EDT 2014 */
 package edu.cmu.deiis.types;
-
-
-/* First created by JCasGen Sat Oct 04 16:21:28 EDT 2014 */
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Oct 04 16:21:28 EDT 2014
- * XML source: /home/micz/workspace/hw2-qzhuang/src/main/resources/descriptors/deiis_types.xml
+ * Updated by JCasGen Mon Oct 06 21:06:09 EDT 2014
+ * XML source: /home/micz/workspace/hw2-qzhuang/src/main/resources/descriptors/CPEPipeline.xml
  * @generated */
 public class Sentence extends Annotation {
   /** @generated
@@ -85,7 +85,7 @@ public class Sentence extends Annotation {
    */
   public String getId() {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "Sentence");
+      jcasType.jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.Sentence");
     return jcasType.ll_cas.ll_getStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_Id);}
     
   /** setter for Id - sets  
@@ -94,7 +94,7 @@ public class Sentence extends Annotation {
    */
   public void setId(String v) {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "Sentence");
+      jcasType.jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.Sentence");
     jcasType.ll_cas.ll_setStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_Id, v);}    
    
     
@@ -107,7 +107,7 @@ public class Sentence extends Annotation {
    */
   public String getText() {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_Text == null)
-      jcasType.jcas.throwFeatMissing("Text", "Sentence");
+      jcasType.jcas.throwFeatMissing("Text", "edu.cmu.deiis.types.Sentence");
     return jcasType.ll_cas.ll_getStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_Text);}
     
   /** setter for Text - sets  
@@ -116,7 +116,7 @@ public class Sentence extends Annotation {
    */
   public void setText(String v) {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_Text == null)
-      jcasType.jcas.throwFeatMissing("Text", "Sentence");
+      jcasType.jcas.throwFeatMissing("Text", "edu.cmu.deiis.types.Sentence");
     jcasType.ll_cas.ll_setStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_Text, v);}    
   }
 

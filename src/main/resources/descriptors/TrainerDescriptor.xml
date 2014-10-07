@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>annotators.AbnerAnnotator</annotatorImplementationName>
+  <primitive>true</primitive>  
+  <annotatorImplementationName>annotators.LRTrainer</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>AbnerAnnotator</name>
+    <name>TrainerDescriptor</name>
     <description/>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
     <typeSystemDescription>
-      <imports>
-        <import location="../uima/deiis_types.xml"/>
-      </imports>
-    </typeSystemDescription>
-    <typePriorities/>
+      </typeSystemDescription>
     <fsIndexCollection/>
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Sentence</type>
+          <type allAnnotatorFeatures="true">GeneNames</type>
         </inputs>
-        <outputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.GeneName</type>
-        </outputs>
+        <outputs/>
         <languagesSupported/>
       </capability>
     </capabilities>

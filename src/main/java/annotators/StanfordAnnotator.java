@@ -1,6 +1,5 @@
 package annotators;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -9,36 +8,38 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.StringArray;
+import org.apache.uima.resource.ResourceInitializationException;
 
-import tools.LingpipeNBest;
+import tools.StanfordNLP;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.Sentence;
 
-public class LingpipeNBestAnnotator extends JCasAnnotator_ImplBase {
+public class StanfordAnnotator extends JCasAnnotator_ImplBase {
+  private static final double confidence = 0.5;
+
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
     FSIndex sentenceIndex = aJCas.getAnnotationIndex(Sentence.type);
     Iterator iter = sentenceIndex.iterator();
-    LingpipeNBest nlp = LingpipeNBest.getInstance();
+    StanfordNLP nlp = null;
+    try {
+      nlp = StanfordNLP.getInstance();
+    } catch (ResourceInitializationException e) {
+      e.printStackTrace();
+    }
     while (iter.hasNext()) {
       Sentence s = (Sentence) iter.next();
       String text = s.getText();
       Vector<String> names = null;
-      try {
-        names = nlp.getGeneSpans(text);
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-      }
-      for (int i = 0; i < names.size(); i++) {
+      names = nlp.getGeneSpans(text);
+      for (String name : names) {
         GeneName geneName = new GeneName(aJCas);
-        geneName.setName(names.elementAt(i));
+        geneName.setName(name);
+        geneName.setConfidence(confidence);
         geneName.setText(text);
         geneName.setId(s.getId());
-        geneName.setConfidence(nlp.getConf().elementAt(i));
         geneName.setCasProcessorId(this.getClass().toString());
-        geneName.addToIndexes();
+        geneName.addToIndexes();        
       }
     }
   }

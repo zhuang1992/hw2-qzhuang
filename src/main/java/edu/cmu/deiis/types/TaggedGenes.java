@@ -1,7 +1,7 @@
+
+
+/* First created by JCasGen Sun Oct 05 15:26:32 EDT 2014 */
 package edu.cmu.deiis.types;
-
-
-/* First created by JCasGen Sat Oct 04 16:21:28 EDT 2014 */
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Oct 04 16:21:28 EDT 2014
- * XML source: /home/micz/workspace/hw2-qzhuang/src/main/resources/descriptors/deiis_types.xml
+ * Updated by JCasGen Mon Oct 06 21:06:09 EDT 2014
+ * XML source: /home/micz/workspace/hw2-qzhuang/src/main/resources/descriptors/CPEPipeline.xml
  * @generated */
 public class TaggedGenes extends Annotation {
   /** @generated
@@ -85,7 +85,7 @@ public class TaggedGenes extends Annotation {
    */
   public String getId() {
     if (TaggedGenes_Type.featOkTst && ((TaggedGenes_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "TaggedGenes");
+      jcasType.jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.TaggedGenes");
     return jcasType.ll_cas.ll_getStringValue(addr, ((TaggedGenes_Type)jcasType).casFeatCode_Id);}
     
   /** setter for Id - sets  
@@ -94,7 +94,7 @@ public class TaggedGenes extends Annotation {
    */
   public void setId(String v) {
     if (TaggedGenes_Type.featOkTst && ((TaggedGenes_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "TaggedGenes");
+      jcasType.jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.TaggedGenes");
     jcasType.ll_cas.ll_setStringValue(addr, ((TaggedGenes_Type)jcasType).casFeatCode_Id, v);}    
    
     
@@ -107,7 +107,7 @@ public class TaggedGenes extends Annotation {
    */
   public String getName() {
     if (TaggedGenes_Type.featOkTst && ((TaggedGenes_Type)jcasType).casFeat_Name == null)
-      jcasType.jcas.throwFeatMissing("Name", "TaggedGenes");
+      jcasType.jcas.throwFeatMissing("Name", "edu.cmu.deiis.types.TaggedGenes");
     return jcasType.ll_cas.ll_getStringValue(addr, ((TaggedGenes_Type)jcasType).casFeatCode_Name);}
     
   /** setter for Name - sets  
@@ -116,7 +116,7 @@ public class TaggedGenes extends Annotation {
    */
   public void setName(String v) {
     if (TaggedGenes_Type.featOkTst && ((TaggedGenes_Type)jcasType).casFeat_Name == null)
-      jcasType.jcas.throwFeatMissing("Name", "TaggedGenes");
+      jcasType.jcas.throwFeatMissing("Name", "edu.cmu.deiis.types.TaggedGenes");
     jcasType.ll_cas.ll_setStringValue(addr, ((TaggedGenes_Type)jcasType).casFeatCode_Name, v);}    
   }
 

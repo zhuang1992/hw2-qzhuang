@@ -11,7 +11,11 @@
     <configurationParameters/>
     <configurationParameterSettings/>
     
-    <typeSystemDescription/>
+    <typeSystemDescription>
+      <imports>
+        <import location="uima/deiis_types.xml"/>
+      </imports>
+    </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>

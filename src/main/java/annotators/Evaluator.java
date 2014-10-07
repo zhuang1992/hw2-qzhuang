@@ -1,4 +1,4 @@
-package tools;
+package annotators;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,22 +9,33 @@ import java.util.HashMap;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.cas.FSIndex;
+import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 
+import edu.cmu.deiis.types.GeneName;
+import edu.cmu.deiis.types.TaggedGenes;
+
 public class Evaluator extends JCasAnnotator_ImplBase{
-  String sampleOutput = "src/main/resources/data/sample.out";
-  String myOutput = "hw2-qzhuang.out";
+  String sampleOutput = "src/main/resources/Correct.data";
   int hitting;
   int myGeneNum;
   int sampleNum;
   HashMap<String, Boolean> standard;
-  HashMap<String, Boolean> my;
-  void Initialize(){
+  double getPrecision(){
+    return (double)hitting/(double)myGeneNum;
+  }
+  double getRecall(){
+    return (double)hitting/(double)sampleNum;
+  }
+  double getF1Score(){
+    return 2.0*getPrecision()*getRecall()/(getPrecision()+getRecall());
+  }
+  @Override
+  public void process(JCas aJCas) throws AnalysisEngineProcessException {
     hitting = 0;
-    myGeneNum = 0;
     sampleNum = 0;
     standard = new HashMap<String, Boolean>();
-    my = new HashMap<String, Boolean>();
     File sampleFile = new File(sampleOutput);
     try {
       BufferedReader sampleFileReader = new BufferedReader(new FileReader(sampleFile));
@@ -41,42 +52,16 @@ public class Evaluator extends JCasAnnotator_ImplBase{
       e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
-    }  
-    File myFile = new File(myOutput);
-    try {
-      BufferedReader myFileReader = new BufferedReader(new FileReader(myFile));
-      String temp = null;
-      while((temp=myFileReader.readLine())!=null){
-        String[] items = temp.split("\\|");
-        String key = items[items.length-1].trim();
-        if(my.containsKey(key)){
-          continue;
-        }
-        if(standard.containsKey(key))
-          hitting++;
-        myGeneNum++;
-        my.put(key, true);
-      }
-      myFileReader.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }   
-  }
-  double getPrecision(){
-    return (double)hitting/(double)myGeneNum;
-  }
-  double getRecall(){
-    return (double)hitting/(double)sampleNum;
-  }
-  double getF1Score(){
-    return 2.0*getPrecision()*getRecall()/(getPrecision()+getRecall());
-  }
-  @Override
-  public void process(JCas aJCas) throws AnalysisEngineProcessException {
-    
-    
+    } 
+    FSIndex geneNames = aJCas.getAnnotationIndex(TaggedGenes.type);
+    FSIterator iter = geneNames.iterator();
+    myGeneNum = 0;
+    while(iter.hasNext()){
+      TaggedGenes tagged = (TaggedGenes) iter.next();
+      if(standard.containsKey(tagged.getName()))
+        hitting++;
+      myGeneNum++;
+    }
   }
   public void destroy(){
     System.out.println("Hitting number: "+hitting);

@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>false</primitive>  <analysisEngineMetaData>
-    <name>aeDescriptor</name>
+  <primitive>true</primitive>  <annotatorImplementationName>annotators.StanfordAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>StanfordAnnotator</name>
     <description/>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    <flowConstraints>
-      <fixedFlow/>
-    </flowConstraints>
+    <typeSystemDescription>
+      <imports>
+        <import location="../uima/deiis_types.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
-        <outputs/>
+        <inputs>
+          <type allAnnotatorFeatures="true">Sentence</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">GeneNames</type>
+        </outputs>
         <languagesSupported/>
       </capability>
     </capabilities>

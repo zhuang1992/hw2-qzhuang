@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName></implementationName>
-  <processingResourceMetaData>
-    <name>casConsumerDescriptor</name>
+  <primitive>true</primitive>  <annotatorImplementationName></annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>hw2-qzhuang-aae</name>
     <description></description>
     <version>1.0</version>
     <vendor></vendor>
@@ -19,7 +19,7 @@
         <languagesSupported></languagesSupported>
       </capability>
     </capabilities>
-  </processingResourceMetaData>
+  </analysisEngineMetaData>
   <externalResourceDependencies></externalResourceDependencies>
   <resourceManagerConfiguration></resourceManagerConfiguration>
-</casConsumerDescription>
+</analysisEngineDescription>

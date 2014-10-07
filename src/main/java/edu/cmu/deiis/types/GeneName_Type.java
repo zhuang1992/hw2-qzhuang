@@ -1,6 +1,6 @@
-package edu.cmu.deiis.types;
 
-/* First created by JCasGen Sat Oct 04 16:21:28 EDT 2014 */
+/* First created by JCasGen Mon Oct 06 10:43:14 EDT 2014 */
+package edu.cmu.deiis.types;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
@@ -13,9 +13,9 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** 
- * Updated by JCasGen Sat Oct 04 16:21:28 EDT 2014
+ * Updated by JCasGen Mon Oct 06 21:06:09 EDT 2014
  * @generated */
-public class GeneNames_Type extends Annotation_Type {
+public class GeneName_Type extends Annotation_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -25,25 +25,25 @@ public class GeneNames_Type extends Annotation_Type {
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (GeneNames_Type.this.useExistingInstance) {
+  			 if (GeneName_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = GeneNames_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = GeneName_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new GeneNames(addr, GeneNames_Type.this);
-  			   GeneNames_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new GeneName(addr, GeneName_Type.this);
+  			   GeneName_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new GeneNames(addr, GeneNames_Type.this);
+        } else return new GeneName(addr, GeneName_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = GeneNames.typeIndexID;
+  public final static int typeIndexID = GeneName.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("GeneNames");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.GeneName");
  
   /** @generated */
   final Feature casFeat_Id;
@@ -55,7 +55,7 @@ public class GeneNames_Type extends Annotation_Type {
    */ 
   public String getId(int addr) {
         if (featOkTst && casFeat_Id == null)
-      jcas.throwFeatMissing("Id", "GeneNames");
+      jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.GeneName");
     return ll_cas.ll_getStringValue(addr, casFeatCode_Id);
   }
   /** @generated
@@ -64,61 +64,34 @@ public class GeneNames_Type extends Annotation_Type {
    */    
   public void setId(int addr, String v) {
         if (featOkTst && casFeat_Id == null)
-      jcas.throwFeatMissing("Id", "GeneNames");
+      jcas.throwFeatMissing("Id", "edu.cmu.deiis.types.GeneName");
     ll_cas.ll_setStringValue(addr, casFeatCode_Id, v);}
     
   
  
   /** @generated */
-  final Feature casFeat_Names;
+  final Feature casFeat_Name;
   /** @generated */
-  final int     casFeatCode_Names;
+  final int     casFeatCode_Name;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public int getNames(int addr) {
-        if (featOkTst && casFeat_Names == null)
-      jcas.throwFeatMissing("Names", "GeneNames");
-    return ll_cas.ll_getRefValue(addr, casFeatCode_Names);
+  public String getName(int addr) {
+        if (featOkTst && casFeat_Name == null)
+      jcas.throwFeatMissing("Name", "edu.cmu.deiis.types.GeneName");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_Name);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setNames(int addr, int v) {
-        if (featOkTst && casFeat_Names == null)
-      jcas.throwFeatMissing("Names", "GeneNames");
-    ll_cas.ll_setRefValue(addr, casFeatCode_Names, v);}
+  public void setName(int addr, String v) {
+        if (featOkTst && casFeat_Name == null)
+      jcas.throwFeatMissing("Name", "edu.cmu.deiis.types.GeneName");
+    ll_cas.ll_setStringValue(addr, casFeatCode_Name, v);}
     
-   /** @generated
-   * @param addr low level Feature Structure reference
-   * @param i index of item in the array
-   * @return value at index i in the array 
-   */
-  public String getNames(int addr, int i) {
-        if (featOkTst && casFeat_Names == null)
-      jcas.throwFeatMissing("Names", "GeneNames");
-    if (lowLevelTypeChecks)
-      return ll_cas.ll_getStringArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i, true);
-    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i);
-	return ll_cas.ll_getStringArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i);
-  }
-   
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param i index of item in the array
-   * @param v value to set
-   */ 
-  public void setNames(int addr, int i, String v) {
-        if (featOkTst && casFeat_Names == null)
-      jcas.throwFeatMissing("Names", "GeneNames");
-    if (lowLevelTypeChecks)
-      ll_cas.ll_setStringArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i, v, true);
-    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i);
-    ll_cas.ll_setStringArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_Names), i, v);
-  }
- 
+  
  
   /** @generated */
   final Feature casFeat_text;
@@ -130,7 +103,7 @@ public class GeneNames_Type extends Annotation_Type {
    */ 
   public String getText(int addr) {
         if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "GeneNames");
+      jcas.throwFeatMissing("text", "edu.cmu.deiis.types.GeneName");
     return ll_cas.ll_getStringValue(addr, casFeatCode_text);
   }
   /** @generated
@@ -139,7 +112,7 @@ public class GeneNames_Type extends Annotation_Type {
    */    
   public void setText(int addr, String v) {
         if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "GeneNames");
+      jcas.throwFeatMissing("text", "edu.cmu.deiis.types.GeneName");
     ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
     
   
@@ -151,7 +124,7 @@ public class GeneNames_Type extends Annotation_Type {
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */
-  public GeneNames_Type(JCas jcas, Type casType) {
+  public GeneName_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
@@ -160,8 +133,8 @@ public class GeneNames_Type extends Annotation_Type {
     casFeatCode_Id  = (null == casFeat_Id) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Id).getCode();
 
  
-    casFeat_Names = jcas.getRequiredFeatureDE(casType, "Names", "uima.cas.StringArray", featOkTst);
-    casFeatCode_Names  = (null == casFeat_Names) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Names).getCode();
+    casFeat_Name = jcas.getRequiredFeatureDE(casType, "Name", "uima.cas.String", featOkTst);
+    casFeatCode_Name  = (null == casFeat_Name) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Name).getCode();
 
  
     casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);

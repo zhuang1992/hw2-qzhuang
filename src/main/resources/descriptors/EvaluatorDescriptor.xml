@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>annotators.AbnerAnnotator</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>annotators.Evaluator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>AbnerAnnotator</name>
+    <name>EvaluatorDescriptor</name>
     <description/>
     <version>1.0</version>
     <vendor/>
-    <configurationParameters/>
-    <configurationParameterSettings/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>SampleOutPath</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>SampleOutPath</name>
+        <value>
+          <string>src/main/resources/ForEvaluation</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
-        <import location="../uima/deiis_types.xml"/>
+        <import location="uima/deiis_types.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
@@ -19,11 +33,9 @@
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Sentence</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.TaggedGenes</type>
         </inputs>
-        <outputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.GeneName</type>
-        </outputs>
+        <outputs/>
         <languagesSupported/>
       </capability>
     </capabilities>

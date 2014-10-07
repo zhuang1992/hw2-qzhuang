@@ -10,7 +10,7 @@
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="aeDescriptor">
             <descriptor>
-                <import location="../descriptors/CPEPipeline.xml"/>
+                <import location="../descriptors/TrainPipeDescriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

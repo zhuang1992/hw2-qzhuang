@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>io.CollectionReader</implementationName>
+  <implementationName>io.Consumer</implementationName>
   <processingResourceMetaData>
-    <name>collectionReaderDescriptor</name>
+    <name>casConsumerDescriptor</name>
     <description/>
     <version>1.0</version>
     <vendor/>
     <configurationParameters>
       <configurationParameter>
-        <name>InputDirectory</name>
+        <name>outputFile</name>
         <type>String</type>
         <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
+        <mandatory>false</mandatory>
       </configurationParameter>
     </configurationParameters>
     <configurationParameterSettings>
       <nameValuePair>
-        <name>InputDirectory</name>
+        <name>outputFile</name>
         <value>
-          <string>./src/main/resources/inputData</string>
+          <string>src/main/resources/data/hw2-qzhuang.out</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>
-    <typeSystemDescription/>
+    <typeSystemDescription>
+      <imports>
+        <import location="deiis_types.xml"/>
+      </imports>
+    </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
+        <inputs>
+          <type allAnnotatorFeatures="true">TaggedGenes</type>
+        </inputs>
         <outputs/>
         <languagesSupported/>
       </capability>
     </capabilities>
   <operationalProperties>
-      <modifiesCas>true</modifiesCas>
+      <modifiesCas>false</modifiesCas>
       <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
-      <outputsNewCASes>true</outputsNewCASes>
+      <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </processingResourceMetaData>
   <resourceManagerConfiguration/>
-</collectionReaderDescription>
+</casConsumerDescription>

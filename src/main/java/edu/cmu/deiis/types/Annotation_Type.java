@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Wed Sep 11 13:44:28 EDT 2013 */
+/* First created by JCasGen Sun Oct 05 15:25:46 EDT 2014 */
 package edu.cmu.deiis.types;
 
 import org.apache.uima.jcas.JCas;
@@ -13,13 +13,15 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** 
- * Updated by JCasGen Wed Sep 11 13:44:28 EDT 2013
- *  */
+ * Updated by JCasGen Mon Oct 06 21:06:09 EDT 2014
+ * @generated */
 public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
-  /**  */
+  /** @generated 
+   * @return the generator for this type
+   */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /**  */
+  /** @generated */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
@@ -35,25 +37,31 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
         } else return new Annotation(addr, Annotation_Type.this);
   	  }
     };
-  /**  */
+  /** @generated */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = Annotation.typeIndexID;
-  /**  
-      */
+  /** @generated 
+     @modifiable */
   @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.Annotation");
  
-  /**  */
+  /** @generated */
   final Feature casFeat_casProcessorId;
-  /**  */
+  /** @generated */
   final int     casFeatCode_casProcessorId;
-  /**  */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public String getCasProcessorId(int addr) {
         if (featOkTst && casFeat_casProcessorId == null)
       jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
     return ll_cas.ll_getStringValue(addr, casFeatCode_casProcessorId);
   }
-  /**  */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setCasProcessorId(int addr, String v) {
         if (featOkTst && casFeat_casProcessorId == null)
       jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
@@ -61,17 +69,23 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
     
   
  
-  /**  */
+  /** @generated */
   final Feature casFeat_confidence;
-  /**  */
+  /** @generated */
   final int     casFeatCode_confidence;
-  /**  */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public double getConfidence(int addr) {
         if (featOkTst && casFeat_confidence == null)
       jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
     return ll_cas.ll_getDoubleValue(addr, casFeatCode_confidence);
   }
-  /**  */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setConfidence(int addr, double v) {
         if (featOkTst && casFeat_confidence == null)
       jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
@@ -82,7 +96,10 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	*  */
+	 * @generated
+	 * @param jcas JCas
+	 * @param casType Type 
+	 */
   public Annotation_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());

@@ -19,6 +19,10 @@ import org.apache.uima.resource.ResourceAccessException;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.TaggedGenes;
 
+
+/**
+ * 
+ **/
 public class Evaluator extends JCasAnnotator_ImplBase{
   int hitting;
   int myGeneNum;

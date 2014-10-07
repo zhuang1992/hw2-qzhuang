@@ -13,7 +13,10 @@ import org.apache.uima.resource.ResourceInitializationException;
 import tools.StanfordNLP;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.Sentence;
-
+/**
+ * This class annotates the input sentence by calling the Stanford Core NLP.
+ * @author Qiankun Zhuang
+ */
 public class StanfordAnnotator extends JCasAnnotator_ImplBase {
   private static final double confidence = 0.5;
 

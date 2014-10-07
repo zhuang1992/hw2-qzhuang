@@ -15,6 +15,12 @@ import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.LRParameter;
 import edu.cmu.deiis.types.TaggedGenes;
 
+/**
+ *  This class combines all results from Lingpipe, StanfordNLP, and Abner to generate
+ *  a final answer. The weight for each of the NLP tools is trained by Logistic Regression before.
+ *  We use the weights to do predictions and generate tagged gene names.
+ * 
+ **/
 public class AnnotationMerge extends JCasAnnotator_ImplBase {
   private static final int numOfAnnotator = 3;
   double Theta[];

@@ -14,7 +14,10 @@ import org.apache.uima.resource.ResourceAccessException;
 import tools.LingpipeNBest;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.Sentence;
-
+/**
+ * This class annotates the input sentence by calling the Lingpipe NER recognizer.
+ * @author Qiankun Zhuang
+ */
 public class LingpipeNBestAnnotator extends JCasAnnotator_ImplBase {
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {

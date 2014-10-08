@@ -1,8 +1,13 @@
 package annotators;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -10,6 +15,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceAccessException;
 
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.LRParameter;
@@ -19,7 +25,7 @@ import edu.cmu.deiis.types.TaggedGenes;
  *  This class combines all results from Lingpipe, StanfordNLP, and Abner to generate
  *  a final answer. The weight for each of the NLP tools is trained by Logistic Regression before.
  *  We use the weights to do predictions and generate tagged gene names.
- * 
+ *  @author Qiankun Zhuang
  **/
 public class AnnotationMerge extends JCasAnnotator_ImplBase {
   private static final int numOfAnnotator = 3;
@@ -37,19 +43,43 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
     Theta = new double[numOfAnnotator+1];
     FSIndex LRPara = aJCas.getAnnotationIndex(LRParameter.type);
     FSIterator ParaIter = LRPara.iterator();
-    while(ParaIter.hasNext()){
-      LRParameter para = (LRParameter)ParaIter.next();
-      for(int i = 0; i < para.getParameters().size(); i++){
-        Theta[i] = para.getParameters(i);
-        //System.out.println(Theta[i]);
+    if(!ParaIter.hasNext()){
+      System.out.println("Please enter the weights of each annotators");
+      InputStream stream = null;
+      try {
+        stream = getContext().getResourceAsStream("defaultParameter");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        String temp = null;
+        int i = 0;
+        while((temp=reader.readLine())!=null){
+            Theta[i++] = Double.valueOf(temp);
+        }
+      } catch (ResourceAccessException e) {
+        e.printStackTrace();
+      } catch (NumberFormatException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      
+      System.out.println("Bias = "+Theta[0]);
+      System.out.println("Weight of Lingpipe = "+Theta[1]);
+      System.out.println("Weight of StanfordNLP = "+Theta[2]);
+      System.out.println("Weight of Abner = "+Theta[3]);
+    }else{
+      while(ParaIter.hasNext()){
+        LRParameter para = (LRParameter)ParaIter.next();
+        for(int i = 0; i < para.getParameters().size(); i++){
+          Theta[i] = para.getParameters(i);
+          //System.out.println(Theta[i]);
+        }
       }
     }
+    
     lr = new HashMap<String, Double>();
     FSIndex geneNames = aJCas.getAnnotationIndex(GeneName.type);
     FSIterator iter = geneNames.iterator();
-    int count = 0;
     while (iter.hasNext()) {
-      count++;
       GeneName geneName = (GeneName) iter.next();
       if (geneName.getCasProcessorId().equals("class annotators.LingpipeNBestAnnotator")) {
         String name = geneName.getName();

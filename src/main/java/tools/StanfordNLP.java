@@ -48,8 +48,7 @@ public class StanfordNLP {
    *  Extract gene names from the input string
    *  @param text
    *      The input string to be analyzed
-   *  @return Map
-   *      Records the start and end position of each gene names in the sentence
+   *  @return Extracted gene names in the sentence
    * 
    */
   public Vector<String> getGeneSpans(String text) {

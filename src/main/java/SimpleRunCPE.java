@@ -86,9 +86,13 @@ public class SimpleRunCPE extends Thread {
             + "args[0] : path to CPE descriptor file");
   }
   /**
-   * Descriptor path for training 
+   * Descriptor for training 
    **/
   private static final String TrainDesriptorPath = "src/main/resources/descriptors/training/TrainCPEDescriptor.xml";
+  /**
+   * Descriptor for tagging 
+   **/
+  private static final String TaggingDescriptorPath = "src/main/resources/descriptors/tagging/TaggingCPEDescriptor.xml";
   /**
    * Descriptor path for training and tagging
    **/
@@ -107,8 +111,6 @@ public class SimpleRunCPE extends Thread {
 
   /**
    * Callback Listener. Receives event notifications from CPE.
-   * 
-   * 
    */
   class StatusCallbackListenerImpl implements StatusCallbackListener {
     int entityCount = 0;

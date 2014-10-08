@@ -21,7 +21,10 @@ import edu.cmu.deiis.types.TaggedGenes;
 
 
 /**
+ * This evaluator takes contents of dataForEvaluation as the golden standard output, and 
+ * calculates the Precision, Recall, and F-1 score of the our program.
  * 
+ * @author Qiankun Zhuang
  **/
 public class Evaluator extends JCasAnnotator_ImplBase{
   int hitting;
@@ -57,7 +60,7 @@ public class Evaluator extends JCasAnnotator_ImplBase{
         if(!standard.containsKey(items[items.length-1].trim())){
           standard.put(items[items.length-1].trim(), true);
           sampleNum++;
-        }          
+        }
       }
       sampleFileReader.close();
     } catch (FileNotFoundException e) {
@@ -76,6 +79,7 @@ public class Evaluator extends JCasAnnotator_ImplBase{
     }
   }
   public void destroy(){
+    System.out.println("Evaluation Result:");
     System.out.println("Hitting number: "+hitting);
     System.out.println("Total Number in my output: "+myGeneNum);
     System.out.println("Total Number in sample: "+sampleNum);

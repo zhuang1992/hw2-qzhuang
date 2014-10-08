@@ -32,5 +32,22 @@
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
-  <resourceManagerConfiguration/>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>defaultParameter</key>
+      <description/>
+      <optional>true</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>defaultParameter</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:defaultParameter</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+    </externalResources>
+  </resourceManagerConfiguration>
 </analysisEngineDescription>

@@ -15,7 +15,12 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 
 import edu.cmu.deiis.types.TaggedGenes;
-
+/**
+ * The consumer class extracts information from CAS and prints information 
+ * to files in required format.
+ * 
+ * @author Qiankun Zhuang 
+ */
 public class Consumer extends CasConsumer_ImplBase implements CasObjectProcessor {
   File outFile;
   FileWriter fileWriter;

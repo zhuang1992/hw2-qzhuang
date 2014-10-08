@@ -5,7 +5,13 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 
 import edu.cmu.deiis.types.Sentence;
-
+/**
+ * A JCas containing all contents of the input file is passed to this class.
+ * Then the contents will be split into sentences by the class, and transported 
+ * to other annotators.
+ * 
+ * @author Qiankun Zhuang
+ */
 public class SplitToSentence extends JCasAnnotator_ImplBase{
 
   @Override

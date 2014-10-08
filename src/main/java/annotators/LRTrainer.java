@@ -19,6 +19,13 @@ import org.apache.uima.resource.ResourceAccessException;
 import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.LRParameter;
 
+/**
+ *  This class takes contents in dataForTraining as the golden standard output. With this, 
+ *  a Logistic Regression algorithm is performed to find the best weights for each 
+ *  annotator. 
+ *  
+ *  @author Qiankun Zhuang 
+ **/
 public class LRTrainer extends JCasAnnotator_ImplBase {
 
   private static final int numOfAnnotators = 3;
@@ -206,10 +213,10 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
     parameter.setParameters(values);
     parameter.addToIndexes();   
     System.out.println("Training complete. Start tagging with the weights we get:");
-    System.out.println("Weight for Lingpipe: "+weight[1]);
-    System.out.println("Weight for Stanford: "+weight[2]);
-    System.out.println("Weight for Abner: "+weight[3]);
-    System.out.println("Bias: "+weight[0]);
+    System.out.println("Bias = "+weight[0]);
+    System.out.println("Weight for Lingpipe = "+weight[1]);
+    System.out.println("Weight for Stanford = "+weight[2]);
+    System.out.println("Weight for Abner = "+weight[3]);
   }
 
   public void destroy() {

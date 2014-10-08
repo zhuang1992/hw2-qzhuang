@@ -15,6 +15,7 @@ import edu.cmu.deiis.types.GeneName;
 import edu.cmu.deiis.types.Sentence;
 /**
  * This class annotates the input sentence by calling the Stanford Core NLP.
+ * 
  * @author Qiankun Zhuang
  */
 public class StanfordAnnotator extends JCasAnnotator_ImplBase {

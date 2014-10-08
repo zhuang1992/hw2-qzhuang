@@ -22,11 +22,6 @@ import com.aliasi.util.AbstractExternalizable;
  * @author Qiankun Zhuang
  */
 public class LingpipeNBest {
-  /**
-   * The path of the trained data set we are using
-   */
-  
-
   File modelFile;
 
   private static LingpipeNBest instance;
@@ -67,7 +62,7 @@ public class LingpipeNBest {
    * 
    * @param text
    *          The input string to be analyzed
-   * @return Map Records the start and end position of each gene names in the sentence
+   * @return Extracted gene names in the sentence
    * 
    */
   public Vector<String> getGeneSpans(String text) throws IOException, ClassNotFoundException {

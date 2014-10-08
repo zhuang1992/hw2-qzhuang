@@ -3,14 +3,14 @@
     <collectionReader>
         <collectionIterator>
             <descriptor>
-                <import location="../uima/collectionReaderDescriptor.xml"/>
+                <import location="uima/collectionReaderDescriptor.xml"/>
             </descriptor>
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="aeDescriptor">
             <descriptor>
-                <import location="../tagging/TaggingPipeDescriptor.xml"/>
+                <import location="TrainAndTaggingAAEDecriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
@@ -22,7 +22,7 @@
         </casProcessor>
         <casProcessor deployment="integrated" name="casConsumerDescriptor">
             <descriptor>
-                <import location="../uima/casConsumerDescriptor.xml"/>
+                <import location="uima/casConsumerDescriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

@@ -111,7 +111,7 @@ public class AnnotationMerge extends JCasAnnotator_ImplBase {
       }
       visitedID.add(name.getId());
       double predict = sigmoid(lr.get(name.getName()));
-      if (predict < 0.1) {//This threshold can be adjusted to trade off between Precision and Recall
+      if (predict < 0.3) {//This threshold can be adjusted to trade off between Precision and Recall
         continue;
       }
       String text = name.getText();

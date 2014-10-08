@@ -31,6 +31,7 @@ public class Consumer extends CasConsumer_ImplBase implements CasObjectProcessor
       throw new ResourceInitializationException(
               ResourceInitializationException.CONFIG_SETTING_ABSENT, new Object[] { "outputFile" });
     }
+    System.out.println(oPath);
     outFile = new File(oPath.trim());
     
     try {

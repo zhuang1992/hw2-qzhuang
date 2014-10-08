@@ -1,9 +1,25 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 
-
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import java.net.URL;
 
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.cas.CAS;
@@ -14,14 +30,13 @@ import org.apache.uima.collection.metadata.CpeDescription;
 import org.apache.uima.util.XMLInputSource;
 
 /**
- * Main Class that runs a Collection Processing Engine (CPE). It also registers a callback listener with the
+ * Main Class that runs a Collection Processing Engine (CPE). This class reads a CPE Descriptor as a
+ * command-line argument and instantiates the CPE. It also registers a callback listener with the
  * CPE, which will print progress and statistics to System.out.
- * There are two cpePath you can choose, 
- * TrainDesriptorPath for training only
- * TrainAndWorkDescriptorPath for both training and tagging.
+ * 
  * 
  */
-public class SimpleRunCPE extends Thread {
+public class RunJarCPE extends Thread {
   /**
    * The CPE instance.
    */
@@ -42,10 +57,8 @@ public class SimpleRunCPE extends Thread {
    * 
    * @param args
    *          command line arguments into the program - see class description
-   * 
-   *        
    */
-  public SimpleRunCPE(String args[]) throws Exception {
+  public RunJarCPE(String args[]) throws Exception {
     mStartTime = System.currentTimeMillis();
 
     // check command line args
@@ -53,11 +66,28 @@ public class SimpleRunCPE extends Thread {
       printUsageMessage();
       System.exit(1);
     }
-    System.out.println(args[0]);
+
+    String resource = args[0];
+
+    URL url = Thread.currentThread().getContextClassLoader().getResource( resource );
+    if( url == null ){
+      throw new RuntimeException( "Cannot find resource on classpath: '" + resource + "'" );
+    }
+
+    String file = url.getFile();
+    String path = new File(file).getParent();
+    System.out.println("Path: " + path);
+    String nameFull = new File(file).getPath();
+    System.out.println("Path full: " + nameFull);
+    System.out.println("Relative base with JAR:" + new File(new URL("jar:"+nameFull).getPath()).getParent());
+
     // parse CPE descriptor
-    System.out.println("Parsing CPE Descriptor");
+    System.out.println("Parsing CPE Descriptor: '" + resource + "'");
     CpeDescription cpeDesc = UIMAFramework.getXMLParser().parseCpeDescription(
-            new XMLInputSource(args[0]));
+            new XMLInputSource("JAR:"+nameFull)
+            //new XMLInputSource(nameFull)
+    );
+
     // instantiate CPE
     System.out.println("Instantiating CPE");
     mCPE = UIMAFramework.produceCollectionProcessingEngine(cpeDesc);
@@ -81,22 +111,14 @@ public class SimpleRunCPE extends Thread {
     }
   }
 
+  /**
+     * 
+     */
   private static void printUsageMessage() {
     System.out.println(" Arguments to the program are as follows : \n"
             + "args[0] : path to CPE descriptor file");
   }
-  /**
-   * Descriptor for training 
-   **/
-  private static final String TrainDesriptorPath = "src/main/resources/descriptors/training/TrainCPEDescriptor.xml";
-  /**
-   * Descriptor for tagging 
-   **/
-  private static final String TaggingDescriptorPath = "src/main/resources/descriptors/tagging/TaggingCPEDescriptor.xml";
-  /**
-   * Descriptor path for training and tagging
-   **/
-  private static final String TrainAndWorkDescriptorPath = "src/main/resources/descriptors/others/TrainAndTaggingCPEDescriptor.xml";
+
   /**
    * main class.
    * 
@@ -104,13 +126,13 @@ public class SimpleRunCPE extends Thread {
    *          Command line arguments - see class description
    */
   public static void main(String[] args) throws Exception {
-    String[] cpePath = new String[3];
-    cpePath[0] = TaggingDescriptorPath;
-    new SimpleRunCPE(cpePath);
+    new RunJarCPE(args);
   }
 
   /**
    * Callback Listener. Receives event notifications from CPE.
+   * 
+   * 
    */
   class StatusCallbackListenerImpl implements StatusCallbackListener {
     int entityCount = 0;
@@ -166,7 +188,7 @@ public class SimpleRunCPE extends Thread {
       System.out.println(mCPE.getPerformanceReport().toString());
       // stop the JVM. Otherwise main thread will still be blocked waiting for
       // user to press Enter.
-      System.exit(1);
+      System.exit(0);
     }
 
     /**
@@ -223,4 +245,5 @@ public class SimpleRunCPE extends Thread {
       }
     }
   }
+
 }

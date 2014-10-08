@@ -19,7 +19,7 @@
       <nameValuePair>
         <name>outputFile</name>
         <value>
-          <string>src/main/resources/data/hw2-qzhuang.out</string>
+          <string>hw2-qzhuang.out</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

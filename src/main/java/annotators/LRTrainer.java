@@ -84,17 +84,9 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
       }
       GeneNameRecord.add(gene);
     }
-    //System.out.println("LRTrainer count: "+count);
     for(GeneName gene : GeneNameRecord){
       gene.removeFromIndexes();
     }
-//    iter = geneName.iterator();
-//    count = 0;
-//    while(iter.hasNext()){
-//      iter.next();
-//      count++;
-//    }
-//    System.out.println("LRTrainer count(after removing): "+count);
     InputStream stream = null;
     try {
       stream = getContext().getResourceAsStream("dataForTraining");
@@ -109,7 +101,6 @@ public class LRTrainer extends JCasAnnotator_ImplBase {
         String[] items = temp.split("\\|");
         if (!correct.contains(items[items.length - 1].trim())) {
           correct.add(items[items.length - 1].trim());
-          // System.out.println(items[items.length - 1].trim());
         }
       }
       reader.close();

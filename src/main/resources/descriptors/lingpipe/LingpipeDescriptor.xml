@@ -8,8 +8,22 @@
 		<description/>
 		<version>1.0</version>
 		<vendor/>
-		<configurationParameters/>
-		<configurationParameterSettings/>
+		<configurationParameters>
+      <configurationParameter>
+        <name>HmmChunker</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+		<configurationParameterSettings>
+      <nameValuePair>
+        <name>HmmChunker</name>
+        <value>
+          <string>/HmmChunker</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
 		<typeSystemDescription>
       <imports>
         <import location="../uima/deiis_types.xml"/>
@@ -51,5 +65,11 @@
         </fileResourceSpecifier>
       </externalResource>
     </externalResources>
+  <externalResourceBindings>
+      <externalResourceBinding>
+        <key>HmmChunker</key>
+        <resourceName>chunkerFile</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
   </resourceManagerConfiguration>
 </analysisEngineDescription>

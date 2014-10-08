@@ -40,7 +40,7 @@ Adding annotator tokenize
 Adding annotator ssplit
 Adding annotator pos
 Loading default properties from tagger edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger
-Reading POS tagger model from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [2.3 sec].
+Reading POS tagger model from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [2.6 sec].
 hw2-qzhuang.out
 Running CPE
 hw2.in
@@ -49,3 +49,76 @@ CPM Initialization Complete
 Tagging with Lingpipe...
 Tagging with StanfordNLP...
 Tagging with Abner...
+Start merging...
+Please enter the weights of each annotators
+Bias = -2.5018729188506055
+Weight of Lingpipe = 1.686450940741777
+Weight of StanfordNLP = -0.8331056356710597
+Weight of Abner = 1.208786676996157
+Start evaluation...
+Evaluation Result:
+Hitting number: 6114
+Total Number in my output: 6772
+Total Number in sample: 12306
+Precision = 0.9028352037802717
+Recall = 0.4968308142369576
+F1_Score = 0.640947688436943
+Completed 1 documents; 2515605 characters
+Total Time Elapsed: 182087 ms 
+Initialization Time: 4055 ms
+Processing Time: 178032 ms
+
+
+ ------------------ PERFORMANCE REPORT ------------------
+
+Component Name: collectionReaderDescriptor
+Event Type: Process
+Duration: 68ms (0.04%)
+Result: success
+Component Name: aeDescriptor
+Event Type: Analysis
+Duration: 177916ms (99.95%)
+Sub-events:
+	Component Name: sentenceSplitDescriptor
+	Event Type: Analysis
+	Duration: 157ms (0.09%)
+
+	Component Name: MergeAnnotator
+	Event Type: Analysis
+	Duration: 169ms (0.09%)
+
+	Component Name: AbnerAnnotator
+	Event Type: Analysis
+	Duration: 152090ms (85.44%)
+
+	Component Name: EvaluatorDescriptor
+	Event Type: Analysis
+	Duration: 25ms (0.01%)
+
+	Component Name: LingpipeDescriptor
+	Event Type: Analysis
+	Duration: 5311ms (2.98%)
+
+	Component Name: StanfordAnnotator
+	Event Type: Analysis
+	Duration: 20161ms (11.33%)
+
+	Component Name: Fixed Flow Controller
+	Event Type: Analysis
+	Duration: 3ms (0%)
+
+Component Name: aeDescriptor
+Event Type: End of Batch
+Duration: 0ms (0%)
+Component Name: casConsumerDescriptor
+Event Type: Analysis
+Duration: 23ms (0.01%)
+Component Name: casConsumerDescriptor
+Event Type: End of Batch
+Duration: 1ms (0%)
+
+Precision: 0.831069108092
+Recall: 0.30813030386
+F1 Score: 0.449574629548
+/home/micz/workspace/hw2-qzhuang/test
+# of student records processed: 1

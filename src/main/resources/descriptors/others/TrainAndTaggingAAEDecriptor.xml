@@ -4,22 +4,22 @@
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="LingpipeDescriptor">
-      <import location="lingpipe/LingpipeDescriptor.xml"/>
+      <import location="../lingpipe/LingpipeDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="StanfordDescriptor">
-      <import location="stanford/StanfordDescriptor.xml"/>
+      <import location="../stanford/StanfordDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="MergeAnnotator">
-      <import location="others/MergeDescriptor.xml"/>
+      <import location="../others/MergeDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="EvaluatorDescriptor">
-      <import location="evaluate/EvaluatorDescriptor.xml"/>
+      <import location="../evaluate/EvaluatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="TrainPipeDescriptor">
-      <import location="training/TrainPipeDescriptor.xml"/>
+      <import location="../training/TrainPipeDescriptor.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="AbnerAnnotator">
-      <import location="abner/AbnerAnnotator.xml"/>
+      <import location="../abner/AbnerAnnotator.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>

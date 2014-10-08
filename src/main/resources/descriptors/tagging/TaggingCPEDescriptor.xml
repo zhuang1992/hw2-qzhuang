@@ -10,7 +10,7 @@
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="aeDescriptor">
             <descriptor>
-                <import location="../tagging/TaggingPipeDescriptor.xml"/>
+                <import location="TaggingPipeDescriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

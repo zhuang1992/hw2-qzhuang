@@ -105,7 +105,7 @@ public class SimpleRunCPE extends Thread {
    */
   public static void main(String[] args) throws Exception {
     String[] cpePath = new String[3];
-    cpePath[0] = TaggingDescriptorPath;
+    cpePath[0] = TrainAndWorkDescriptorPath;
     new SimpleRunCPE(cpePath);
   }
 

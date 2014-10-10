@@ -61,6 +61,7 @@ public class LingpipeNBestAnnotator extends JCasAnnotator_ImplBase {
   public void initialize(UimaContext context) {
     try {
       String modelFile = (String) context.getConfigParameterValue((CHUNKER_PATH)); 
+      System.out.println(modelFile);
       chunker = (ConfidenceChunker) AbstractExternalizable.readResourceObject(modelFile);
     } catch (IOException e) {
       e.printStackTrace();

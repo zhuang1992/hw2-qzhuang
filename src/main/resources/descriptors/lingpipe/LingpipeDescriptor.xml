@@ -20,7 +20,7 @@
       <nameValuePair>
         <name>HmmChunker</name>
         <value>
-          <string>/HmmChunker</string>
+          <string>/TrainedDict.dic</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>
